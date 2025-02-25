@@ -1,0 +1,559 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: antiquewhite;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    padding: 20px;
+    padding-bottom: 100px; /* Add padding at the bottom to make room for music player */
+}
+
+.heart-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #ff3366;
+    transform: rotate(45deg);
+    animation: float 15s infinite linear;
+    opacity: 0.6;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #ff3366;
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -15px;
+    left: 0;
+}
+
+.heart:after {
+    left: -15px;
+    top: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+#headlineContainer {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+#shine {
+    font-size: 60px;
+    font-weight: bold;
+    color: rgba(255, 0, 102, 0.7);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 0, 102, 0.7) 0%,
+        #fff 50%,
+        rgba(255, 0, 102, 0.7) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+    text-shadow: 0 2px 4px rgba(233, 85, 189, 0.2);
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.gallery {
+    --d: 10s;
+    display: grid;
+    place-items: center;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+}
+
+.gallery > img {
+    grid-area: 1/1;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 10px solid #f2f2f2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    border-radius: 10px;
+    animation: slide var(--d) infinite, z-order var(--d) infinite steps(1);
+    position: absolute;
+    transition: transform 0.5s ease;
+}
+
+.gallery img:last-child {
+    animation-name: slide, z-order-last;
+}
+
+.gallery > img:nth-child(1) {
+    animation-delay: calc(0 * var(--d));
+    --r: 16deg;
+}
+.gallery > img:nth-child(2) {
+    animation-delay: calc(-0.17 * var(--d));
+    --r: -8deg;
+}
+.gallery > img:nth-child(3) {
+    animation-delay: calc(-0.34 * var(--d));
+    --r: -12deg;
+}
+.gallery > img:nth-child(4) {
+    animation-delay: calc(-0.51 * var(--d));
+    --r: 10deg;
+}
+.gallery > img:nth-child(5) {
+    animation-delay: calc(-0.68 * var(--d));
+    --r: -5deg;
+}
+.gallery > img:nth-child(6) {
+    animation-delay: calc(-0.85 * var(--d));
+    --r: 5deg;
+}
+
+@keyframes slide {
+    0%, 15%, 100% {
+        transform: translateX(0%) rotate(var(--r)); 
+    }
+    20%, 35% {
+        transform: translateX(120%) rotate(var(--r));
+    }
+}
+
+@keyframes z-order {
+    0%, 15% {
+        z-index: 2;
+    }
+    20%, 95% {
+        z-index: 1;
+    }
+}
+
+@keyframes z-order-last {
+    0%, 15% {
+        z-index: 2;
+    }
+    20%, 85% {
+        z-index: 1;
+    }
+    90%, 100% {
+        z-index: 2;
+    }
+}
+
+/* Message section */
+.message-container {
+max-width: 700px;
+margin: 0 auto;
+background-color: var(--parchment);
+padding: 40px;
+border-radius: 10px;
+position: relative;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+transform-style: preserve-3d;
+transition: transform 0.5s ease;
+}
+
+.message-container::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='none' stroke='%23d4af37' stroke-width='1' stroke-dasharray='2,2'/></svg>") repeat;
+opacity: 0.1;
+z-index: 0;
+border-radius: 10px;
+}
+
+.section-title {
+position: relative;
+margin-top: 50px; 
+font-size: 30px;
+font-weight: bold;
+color: rgba(255, 0, 102, 0.7);
+background: linear-gradient(
+90deg,
+rgba(255, 0, 102, 0.7) 0%,
+#fff 50%,
+rgba(255, 0, 102, 0.7) 100%
+);
+background-size: 200% auto;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: shine 3s linear infinite;
+text-shadow: 0 2px 4px rgba(233, 85, 189, 0.2);
+}
+
+@keyframes title {
+0% {
+background-position: 0% center;
+}
+100% {
+background-position: 200% center;
+}
+}
+
+.message-content {
+position: relative;
+z-index: 1;
+text-align: center;
+}
+
+.message-title {
+font-size: 1.4rem;
+color: #333;
+margin-bottom: 20px;
+}
+
+.message-body {
+font-size: 1.1rem;
+line-height: 1.8;
+color: #444;
+margin-bottom: 30px;
+text-align: left;
+}
+
+.signature {
+text-align: right;
+font-family: 'Brush Script MT', cursive;
+font-size: 1.8rem;
+color: #333;
+margin-top: 20px;
+}
+.signature2 {
+text-align: right;
+font-family: 'Brush Script MT', cursive;
+font-size: 1.8rem;
+color: #333;
+margin-top: 5px;
+}
+.message {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 18px;
+    color: #ff3366;
+    max-width: 600px;
+    line-height: 1.6;
+    z-index: 2;
+    position: relative;
+    margin-bottom: 80px; /* Add margin to prevent music player overlap */
+}
+
+.music-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    max-width: 300px;
+    width: 90%;
+}
+
+.music-controls.collapsed {
+    width: auto;
+    max-width: 250px;
+}
+
+.music-controls.expanded {
+    width: 250px;
+}
+
+.music-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.music-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff3366;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.primary-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.volume-controls {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.volume-slider {
+    flex-grow: 1;
+    margin: 0 10px;
+    accent-color: #ff3366;
+}
+
+.music-controls button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff3366;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.music-controls button:hover {
+    background-color: rgba(255, 51, 102, 0.1);
+}
+
+.music-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff3366;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.music-playlist {
+    display: none;
+    width: 100%;
+    margin-top: 15px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.music-playlist.visible {
+    display: block;
+}
+
+.playlist-item {
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 8px;
+    background-color: rgba(255, 51, 102, 0.1);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.playlist-item:hover {
+    background-color: rgba(255, 51, 102, 0.2);
+}
+
+.playlist-item.active {
+    background-color: rgba(255, 51, 102, 0.3);
+    font-weight: bold;
+}
+
+.playlist-item-title {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-item-icon {
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+    #shine {
+        font-size: 36px;
+        text-align: center;
+    }
+    
+    #headlineContainer {
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+    
+    .gallery {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .heart {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .heart:before,
+    .heart:after {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .heart:before {
+        top: -10px;
+    }
+    
+    .heart:after {
+        left: -10px;
+    }
+    
+    .message-container {
+        padding: 20px;
+    }
+    
+    .message-body {
+        font-size: 1rem;
+    }
+
+    .music-controls {
+        padding: 10px;
+    }
+
+    .music-controls.expanded {
+        width: 200px;
+    }
+
+    .music-controls button {
+        font-size: 20px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .music-title {
+        font-size: 14px;
+        max-width: 120px;
+    }
+    
+    .playlist-item {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #shine {
+        font-size: 24px;
+    }
+    
+    .gallery {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .music-controls.expanded {
+        width: 180px;
+    }
+}
+
+/* Add a minimize button to completely hide the player if needed */
+.minimize-button {
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    background-color: #ff3366;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+}
+
+.music-controls.minimized {
+    height: 40px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.restore-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff3366;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    text-align: right;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1rem;
+    color:  rgba(255, 51, 102, 0.3);
+    margin-top: 25px;
+    opacity: 50%;
+}

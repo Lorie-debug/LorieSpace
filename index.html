@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wifey🤍</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div class="heart-background" id="heartContainer">
+        <!-- Hearts will be dynamically added with JavaScript -->
+    </div>
+
+    <div id="headlineContainer">
+        <div id="shine">
+            Happy Anniversary my Wifey
+        </div>
+    </div>
+    
+    <div class="gallery">
+        <img src="babbu.png.jpeg" alt="Anniversary memory">
+        <img src="ladditpg.png.jpeg" alt="Anniversary memory">
+        <img src="laptopview.png.jpg" alt="Anniversary memory">
+        <img src="babbu.png.jpeg" alt="Anniversary memory">
+        <img src="mirrorshot.png.jpg" alt="Anniversary memory">
+        <img src="selfie.png.jpeg" alt="Anniversary memory">
+        <img src="seniorhigh.png.jpeg" alt="Anniversary memory">
+    </div>
+    
+    <section class="section" id="message-section">
+        <h2 class="section-title">My Heart to Yours</h2>
+        <div class="message-container" id="message-container">
+            <div class="message-content">
+                <h3 class="message-title">To My Beloved Wife</h3>
+                <div class="message-body">
+                    <p>My Dearest Love,</p>
+                    <p>On this special day that marks another year of our beautiful journey together, I find myself reflecting on the countless moments that have filled my heart with joy and gratitude. Every day by your side has been nothing short of extraordinary.</p>
+                    <p>Your smile continues to light up my world. Your laughter remains the sweetest melody to my ears. Your love has been my strength through every challenge, and your companionship my greatest blessing in times of joy.</p>
+                    <p>I cherish the woman you are—kind, brilliant, and full of grace. I treasure the life we've built together, with its quiet moments of understanding and passionate declarations of love. I look forward to all the adventures that still await us, to growing old together, hand in hand, heart to heart.</p>
+                    <p>Thank you for choosing me, for loving me, for being my partner in all things. Today and every day, I celebrate the miracle of having you in my life.</p>
+                    <p>With all my heart and soul,</p>
+                </div>
+                <div class="signature">Forever Yours</div>
+                <div class="signature2">Lorie Mar</div>
+            </div>
+        </div>
+    </section>
+    <!-- Audio elements for different music tracks -->
+    <audio id="music1" loop>
+        <source src="Mundo.mp3.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="music2" loop>
+        <source src="About You - The 1975.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="music3" loop>
+        <source src="Sanctuary - Joji.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="music4" loop>
+        <source src="Pluto Projector - Rex Orange County.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="music5" loop>
+        <source src="I Love You So - The Walters.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Restore button for minimized player -->
+    <button id="restoreBtn" class="restore-button">🎵</button>
+
+    <!-- Enhanced Music controls -->
+    <div id="musicControls" class="music-controls collapsed">
+        <button id="minimizeBtn" class="minimize-button">−</button>
+        <div class="music-header">
+            <div class="music-title" id="currentSongTitle">Music that reminds me of you</div>
+            <button id="expandBtn" class="music-toggle">↕</button>
+        </div>
+        
+        <div class="primary-controls">
+            <button id="prevBtn" title="Previous Song">⊲</button>
+            <button id="playPauseBtn" title="Play/Pause">▶</button>
+            <button id="nextBtn" title="Next Song">⊳</button>
+        </div>
+        
+        <div class="volume-controls">
+            <span>🔈</span>
+            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.1" value="0.7">
+            <span>🔊</span>
+        </div>
+        
+        <div id="playlist" class="music-playlist">
+            <div class="playlist-item active" data-music-id="music1">
+                <span class="playlist-item-title">Mundo</span>
+                <span class="playlist-item-icon">♫</span>
+            </div>
+            <div class="playlist-item" data-music-id="music2">
+                <span class="playlist-item-title">About you</span>
+                <span class="playlist-item-icon">♫</span>
+            </div>
+            <div class="playlist-item" data-music-id="music3">
+                <span class="playlist-item-title">Sanctuary - Joji</span>
+                <span class="playlist-item-icon">♫</span>
+            </div>
+            <div class="playlist-item" data-music-id="music4">
+                <span class="playlist-item-title">Pluto Projector</span>
+                <span class="playlist-item-icon">♫</span>
+            </div>
+            <div class="playlist-item" data-music-id="music5">
+                <span class="playlist-item-title">I Love You So</span>
+                <span class="playlist-item-icon">♫</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="footer" id="remarks" >
+        <h3>LMSEVILLA</h3>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>
